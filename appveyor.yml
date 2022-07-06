@@ -1,0 +1,10 @@
+image: Ubuntu #Образ для сборки
+stack: node 12 #окружение (версия node.js)
+branches: 
+  only: 
+    - master #ветка git, которая хранит информацию для сборки
+cache: node_modules #кеширование (откуда буду браться кешированные пакеты)
+install:
+  - npm install #команда установки зависимостей
+test_script:
+  - npm run lint && npm test #скрипт сборки 
