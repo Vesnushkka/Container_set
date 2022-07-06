@@ -4,20 +4,22 @@ export class Team {
   }
 
   add(character) {
-    try{
+    const arr = this.toArray();
+    const isExist = arr.find( el => arr.includes(el))
+    if (!isExist) {
       this.members.add(character);
+    } else {
+      throw new Error ("Персонаж уже добавлен в команду!")
     }
-    catch (err) {
-      alert ('Ошибка ' +  err.name)
-    } 
+    
   }
 
-  addAll(character) {
-    this.members.add(...character);
+  addAll(...characters) {
+    this.members.add(...characters);
   }
 
   toArray() {
-    Array.from(this.members)
+    return Array.from(this.members)
   }
 }
 
@@ -29,5 +31,7 @@ export class Character {
 
 const team = new Team();
 const character = new Character('Ivan');
+const character1 = new Character('Ivan');
 team.add(character);
+team.add(character1);
 console.log(team);
