@@ -1,12 +1,12 @@
 export class Team {
   constructor() {
     this.members = new Set();
+    console.log(this.members);
   }
 
   add(character) {
-    const arr = this.toArray();
-    const isExist = arr.find((el) => arr.includes(el));
-    if (!isExist) {
+    const isExist = this.members.has(character);
+    if (isExist === false) {
       this.members.add(character);
     } else {
       throw new Error("Персонаж уже добавлен в команду!");
@@ -28,9 +28,4 @@ export class Character {
   }
 }
 
-const team = new Team();
-const character = new Character("Ivan");
-const character1 = new Character("Ivan");
-team.add(character);
-team.add(character1);
-console.log(team);
+
